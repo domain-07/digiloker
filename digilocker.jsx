@@ -303,7 +303,8 @@ const DigiLockerUI = () => {
               </div>
             </div>
 
-            {/* Document you might need section */}
+            {/* Document you might need section */}C:\Program Files\
+
             <div style={{ padding: "16px 18px 24px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: "#3c3c9e", margin: 0 }}>Document you might need</h3>
