@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiLocker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <script>
+        const { useState } = React;
+
+        const DigiLockerUI = () => {
+            const [menuOpen, setMenuOpen] = useState(false);
+            const [showAadhaar, setShowAadhaar] = useState(false);
+
+            return (
+                <div style={{ fontFamily: "'Segoe UI', sans-serif", background: "#fff", maxWidth: 430, margin: "0 auto", minHeight: "100vh", position: "relative", overflowX: "hidden", boxShadow: "0 0 30px rgba(0,0,0,0.15)" }}>
+
+                    {/* Header */}
+                    <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #eee", background: "#fff" }}>
+                        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", marginRight: "12px", flexShrink: 0 }}>
+                            <div style={{ width: 22, height: 2, background: "#333", marginBottom: 5 }}></div>
+                            <div style={{ width: 22, height: 2, background: "#333", marginBottom: 5 }}></div>
+                            <div style={{ width: 22, height: 2, background: "#333" }}></div>
+                        </button>
+                        <img
+                            src="data:image/png;base64,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"
+                            alt="DigiLocker - Document Wallet to Empower Citizens"
+                            style={{ height: 44, width: "auto", objectFit: "contain" }}
+                        />
+                    </div>
+
+                    {/* Welcome Section */}
+                    <div style={{ padding: "20px 18px 10px" }}>
+                        <h2 style={{ fontSize: 22, fontWeight: 700, color: "#3c3c9e", margin: 0 }}>Welcome, Aryan !</h2>
+                        <p style={{ fontSize: 14, color: "#444", marginTop: 10, lineHeight: 1.6 }}>
+                            DigiLocker 'Issued Documents' are at par with original documents as per IT ACT, 2000
+                        </p>
+                    </div>
+
+                    {/* Issued Documents Section */}
+                    <div style={{ padding: "8px 18px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                            <h3 style={{ fontSize: 16, fontWeight: 700, color: "#3c3c9e", margin: 0 }}>Your Issued Documents</h3>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: "#5b52d4", cursor: "pointer" }}>VIEW ALL (5)</span>
+                        </div>
+
+                        {/* Document Cards Horizontal Scroll */}
+                        <div style={{ display: "flex", gap: 14, overflowX: "auto", paddingBottom: 8, scrollbarWidth: "none" }}>
+                            {/* Aadhaar Card */}
+                            <div onClick={() => setShowAadhaar(true)} style={{ minWidth: 200, background: "#fff", border: "1px solid #e8e8e8", borderRadius: 12, padding: "18px 16px", boxShadow: "0 1px 6px rgba(0,0,0,0.06)", flex: "0 0 auto", cursor: "pointer" }}>
+                                <div style={{ display: "flex", alignItems: "center", marginBottom: 10 }}>
+                                    <div style={{ marginRight: 12 }}>
+                                        <img src="data:image/png;base64,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fWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAHhHO16Z1FQn9+IfEVQxvfWYvAFHXCl5eXl5eXkkIQhCn4/9k="
+                                            alt="Aadhaar" style={{width: 44, height: 44, objectFit: "contain"}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontSize: 14, fontWeight: 600, color: "#3c3c9e" }}>Aadhaar</div>
+                                        <div style={{ fontSize: 12, color: "#999", marginTop: 3 }}>ID</div>
+                                    </div>
+                                </div>
+                                <p style={{ fontSize: 13, color: "#999", margin: 0 }}>XXXX XXXX 1234</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Modal for Aadhaar Details */}
+                    {showAadhaar && (
+                        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000 }}>
+                            <div style={{ background: "#fff", borderRadius: 12, padding: 24, maxWidth: 400, boxShadow: "0 10px 40px rgba(0,0,0,0.3)" }}>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                                    <h2 style={{ fontSize: 18, fontWeight: 700, color: "#3c3c9e", margin: 0 }}>Aadhaar Details</h2>
+                                    <button onClick={() => setShowAadhaar(false)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 24 }}>×</button>
+                                </div>
+                                <div style={{ fontSize: 13, color: "#666", lineHeight: 1.8 }}>
+                                    <p><strong>Name:</strong> Aryan</p>
+                                    <p><strong>Aadhaar ID:</strong> XXXX XXXX 1234</p>
+                                    <p><strong>Gender:</strong> Male</p>
+                                    <p><strong>DOB:</strong> 15-01-2000</p>
+                                    <p><strong>Status:</strong> Active</p>
+                                </div>
+                                <button onClick={() => setShowAadhaar(false)} style={{ marginTop: 16, padding: "10px 16px", background: "#3c3c9e", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 14, fontWeight: 600 }}>Close</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<DigiLockerUI />);
+    </script>
+</body>
+</html>
